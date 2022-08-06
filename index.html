@@ -5,7 +5,8 @@
     
 
 <link rel="stylesheet" href="bootstrap/style/css/bootstrap.css">
-<link rel="stylesheet" href="bootstrap/BsTable3.3.7/bootstrap-table.css">
+<link rel="stylesheet" href="bootstrap/style/css/bootstrap.css">
+<link rel="stylesheet" href="bootstrap/BsTable3.3.7/bootstrap-table.min.css">
 
 <title>test git demo 1</title>
     <body>
@@ -17,10 +18,52 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <p class="bg-info">PRIMERA MODIFICACION A GITHUB</p>
+                <p class="bg-info"><h4>DATATABLE PARA CALCULAR INTERES $0000.00 MX</h4></p>
                 </div>
         </div>
+
         <div class="row">
+            <div class="col-md-4">
+                
+
+                <form class="form-horizontal" onsubmit="getReset()" >
+                    <div class="form-group">
+                        <label for="inputMonto" class="col-sm-4 control-label">Monto</label>
+                        <div class="col-sm-8">
+                          <input type="text" class="form-control" id="inputMonto" placeholder="$000.00">
+                        </div>
+                      </div>
+                    <div class="form-group">
+                      <label for="inputInteres" class="col-sm-4 control-label">Interes</label>
+                      <div class="col-sm-8">
+                        <input type="texto" class="form-control" id="inputInteres" placeholder="$000.00">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPlazo" class="col-sm-4 control-label">Plazo a meses</label>
+                        <div class="col-sm-8">
+                          <input type="texto" class="form-control" id="inputPlazo" placeholder="$000.00">
+                        </div>
+                      </div>
+                   
+                    <div class="form-group"  >
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success" onclick="getVal()" >Calcular</button>
+                      </div>
+                    </div>
+                  </form>
+
+            </div>
+            <div class="col-md-4">
+                <table id="table"></table>
+            </div>
+            <div class="col-md-4">
+                vacio
+            </div>
+          </div>
+
+          
+        <div class="row" style="display: none;">
             <div class="col-md-4">
                 <form class="form-inline">
                     <div class="form-group">
@@ -42,13 +85,63 @@
             </div>
           </div>
 
-        
+          </body>
 
-    </body>
+
 <script src="jquery/jquery-3.2.1.min.js"></script>
 <script src="bootstrap/style/js/bootstrap.js"></script>
 <script src="bootstrap/BsTable3.3.7/bootstrap-table.js"></script>
 <script src="bootstrap/BsTable3.3.7/bootstrap-table-es-SP.js"></script>
+
+
+
+<script>
+// variables globales
+var monto;  
+var interes; 
+var plazo;
+var totalFijo;   
+
+
+
+function getVal(){
+    console.log("function getVal()");
+    monto=($('#inputMonto').val());
+    interes=$('#inputInteres').val();
+    plazo=$('#inputPlazo').val();
+
+    console.log("datos \n"+monto+ "\n"+interes+"\n"+plazo);
+    
+
+
+   fijo=Number(monto)*Number(interes)+Number(monto)/Number(plazo); 
+   console.log("total de pagos: "+plazo+ "\n pago: "+fijo); 
+    
+}
+
+function getReset(){
+    console.log("getReset()");
+    $('#inputMonto').val('');
+    $('#inputInteres').val('');
+    $('#inputPlazo').val('');
+}
+
+$('#table').bootstrapTable({
+    
+    columns: [{
+    field: '$000.00',
+    title: 'monto'
+    }, {
+    field: '$000.00',
+    title: 'interes'
+    }, {
+    field: '$000.00',
+    title: 'total'
+    }]
+            })
+</script>
+
+
 
 </html>
     
